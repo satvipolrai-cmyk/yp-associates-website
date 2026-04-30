@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Y&amp;P Associates | Enquiry Admin</title>
+    <style>
+      :root {
+        --bg: #f6f3ee;
+        --surface: #ffffff;
+        --ink: #17221d;
+        --muted: #65706b;
+        --line: #dce3de;
+        --green: #185d45;
+        --green-dark: #0d3b2c;
+        --danger: #a83428;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+      }
+
+      .admin-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px;
+      }
+
+      .admin-header,
+      .toolbar,
+      .request-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 12px 28px rgba(23, 34, 29, 0.06);
+      }
+
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 24px;
+        margin-bottom: 18px;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: minmax(220px, 1fr) auto auto;
+        gap: 12px;
+        align-items: end;
+        padding: 18px;
+        margin-bottom: 18px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-weight: 800;
+      }
+
+      input {
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px 12px;
+        font: inherit;
+      }
+
+      button,
+      .button-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        background: var(--green);
+        color: #fff;
+        font: inherit;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      button.secondary,
+      .button-link.secondary {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--green-dark);
+      }
+
+      .status {
+        min-height: 24px;
+        margin-bottom: 14px;
+        font-weight: 800;
+      }
+
+      .status.error {
+        color: var(--danger);
+      }
+
+      .status.success {
+        color: var(--green);
+      }
+
+      .requests-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .request-card {
+        padding: 18px;
+      }
+
+      .request-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .request-top strong {
+        display: block;
+        font-size: 1.12rem;
+      }
+
+      .request-top span,
+      .field span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .field {
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f9fbf9;
+      }
+
+      .field strong,
+      .field span {
+        display: block;
+      }
+
+      .field strong {
+        margin-top: 4px;
+      }
+
+      .notes {
+        grid-column: 1 / -1;
+      }
+
+      @media (max-width: 820px) {
+        .admin-header,
+        .request-top,
+        .toolbar {
+          grid-template-columns: 1fr;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .details-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="admin-shell">
+      <section class="admin-header">
+        <div>
+          <h1>Valuation Enquiries</h1>
+          <p>View property valuation requests submitted through the Y&amp;P Associates website.</p>
+        </div>
+        <a class="button-link secondary" href="/">Open website</a>
+      </section>
+
+      <section class="toolbar">
+        <label>
+          Admin token
+          <input id="token" type="password" placeholder="Enter ADMIN_TOKEN" />
+        </label>
+        <button id="load-button" type="button">Load enquiries</button>
+        <button id="export-button" class="secondary" type="button">Export CSV</button>
+      </section>
+
+      <p class="status" id="status" role="status"></p>
+      <section class="requests-grid" id="requests"></section>
+    </main>
+
+    <script>
+      const tokenInput = document.getElementById("token");
+      const loadButton = document.getElementById("load-button");
+      const exportButton = document.getElementById("export-button");
+      const statusEl = document.getElementById("status");
+      const requestsEl = document.getElementById("requests");
+      let loadedRequests = [];
+
+      function setStatus(message, type = "") {
+        statusEl.textContent = message;
+        statusEl.className = `status ${type}`;
+      }
+
+      function escapeHtml(value) {
+        return String(value || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function formatDate(value) {
+        if (!value) return "";
+        return new Date(value).toLocaleString("en-IN", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        });
+      }
+
+      function renderRequests(requests) {
+        if (!requests.length) {
+          requestsEl.innerHTML = '<article class="request-card"><p>No enquiries found yet.</p></article>';
+          return;
+        }
+
+        requestsEl.innerHTML = requests
+          .map(
+            (request) => `
+              <article class="request-card">
+                <div class="request-top">
+                  <div>
+                    <strong>${escapeHtml(request.name)}</strong>
+                    <span>${escapeHtml(request.mobile)}</span>
+                  </div>
+                  <span>${formatDate(request.createdAt)}</span>
+                </div>
+                <div class="details-grid">
+                  <div class="field">
+                    <span>Property category</span>
+                    <strong>${escapeHtml(request.propertyType)}</strong>
+                  </div>
+                  <div class="field">
+                    <span>Approx. area</span>
+                    <strong>${escapeHtml(request.area)}</strong>
+                  </div>
+                  <div class="field">
+                    <span>Purpose</span>
+                    <strong>${escapeHtml(request.purpose)}</strong>
+                  </div>
+                  <div class="field">
+                    <span>Preferred time</span>
+                    <strong>${escapeHtml(request.contactTime)}</strong>
+                  </div>
+                  <div class="field notes">
+                    <span>Location</span>
+                    <strong>${escapeHtml(request.location)}</strong>
+                  </div>
+                  <div class="field notes">
+                    <span>Additional information</span>
+                    <strong>${escapeHtml(request.details)}</strong>
+                  </div>
+                </div>
+              </article>
+            `
+          )
+          .join("");
+      }
+
+      async function loadRequests() {
+        const token = tokenInput.value.trim();
+
+        if (!token) {
+          setStatus("Please enter the admin token.", "error");
+          return;
+        }
+
+        try {
+          const response = await fetch("/api/valuation-requests", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error(result.message || "Could not load enquiries.");
+          }
+
+          loadedRequests = result.requests || [];
+          renderRequests(loadedRequests);
+          setStatus(`${loadedRequests.length} enquiry record(s) loaded.`, "success");
+        } catch (error) {
+          loadedRequests = [];
+          renderRequests([]);
+          setStatus(error.message, "error");
+        }
+      }
+
+      function exportCsv() {
+        if (!loadedRequests.length) {
+          setStatus("Load enquiries before exporting.", "error");
+          return;
+        }
+
+        const headers = [
+          "Name",
+          "Mobile",
+          "Property Type",
+          "Area",
+          "Location",
+          "Purpose",
+          "Preferred Time",
+          "Details",
+          "Created At",
+        ];
+        const rows = loadedRequests.map((request) => [
+          request.name,
+          request.mobile,
+          request.propertyType,
+          request.area,
+          request.location,
+          request.purpose,
+          request.contactTime,
+          request.details,
+          request.createdAt,
+        ]);
+        const csv = [headers, ...rows]
+          .map((row) => row.map((cell) => `"${String(cell || "").replaceAll('"', '""')}"`).join(","))
+          .join("\n");
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+        const link = document.createElement("a");
+
+        link.href = URL.createObjectURL(blob);
+        link.download = "valuation-enquiries.csv";
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
+
+      loadButton.addEventListener("click", loadRequests);
+      exportButton.addEventListener("click", exportCsv);
+    </script>
+  </body>
+</html>
