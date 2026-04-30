@@ -1,0 +1,1457 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Y&amp;P Associates | Property Valuation Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+:root {
+  --bg: #f6f3ee;
+  --surface: #ffffff;
+  --surface-soft: #edf3ef;
+  --ink: #17221d;
+  --muted: #65706b;
+  --line: #dce3de;
+  --green: #185d45;
+  --green-dark: #0d3b2c;
+  --charcoal: #18201d;
+  --clay: #bc6f46;
+  --amber: #d8a03d;
+  --blue: #356985;
+  --shadow: 0 22px 60px rgba(23, 34, 29, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+}
+
+.contact-strip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 8px clamp(18px, 5vw, 72px);
+  background: var(--charcoal);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.contact-strip span {
+  margin-right: auto;
+  color: #fff;
+}
+
+.contact-strip a {
+  color: rgba(255, 255, 255, 0.86);
+  text-decoration: none;
+}
+
+.contact-strip a:hover {
+  color: #fff;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px clamp(18px, 5vw, 72px);
+  background: rgba(246, 243, 238, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 28px rgba(23, 34, 29, 0.06);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-mark,
+.icon-box {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 800;
+}
+
+.brand small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background: var(--surface-soft);
+  color: var(--green);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav-cta:hover {
+  background: var(--green);
+}
+
+.hero {
+  min-height: calc(100vh - 78px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-media {
+  position: relative;
+  min-height: 460px;
+  background:
+    linear-gradient(90deg, rgba(13, 59, 44, 0.42), rgba(13, 59, 44, 0.08)),
+    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=82")
+      center / cover;
+}
+
+.hero-badge {
+  position: absolute;
+  left: clamp(18px, 4vw, 48px);
+  right: clamp(18px, 4vw, 48px);
+  bottom: clamp(18px, 4vw, 48px);
+  max-width: 430px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  background: rgba(13, 59, 44, 0.78);
+  color: #fff;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 22px 50px rgba(13, 59, 44, 0.24);
+}
+
+.hero-badge span,
+.hero-badge strong {
+  display: block;
+}
+
+.hero-badge span {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-badge strong {
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 6vw, 88px);
+  background: var(--surface);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--clay);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 12ch;
+  margin-bottom: 20px;
+  font-size: clamp(2.7rem, 6vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 14px;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin-bottom: 8px;
+  font-size: 1.08rem;
+}
+
+p,
+li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.hero-content p {
+  max-width: 66ch;
+  font-size: 1.05rem;
+}
+
+.hero-actions,
+.trust-row,
+.hero-metrics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-actions {
+  margin: 30px 0;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.primary-button {
+  background: var(--green);
+  color: #fff;
+}
+
+.secondary-button {
+  background: #fff;
+  color: var(--green);
+  border-color: var(--line);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-1px);
+}
+
+.trust-row span {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--green-dark);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.hero-metrics {
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+.hero-metrics div {
+  flex: 1 1 160px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fafbf9;
+}
+
+.hero-metrics strong,
+.hero-metrics span {
+  display: block;
+}
+
+.hero-metrics strong {
+  margin-bottom: 6px;
+  color: var(--green-dark);
+}
+
+.hero-metrics span {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.section {
+  padding: clamp(42px, 6vw, 82px) clamp(18px, 5vw, 72px);
+}
+
+.section-heading {
+  max-width: 780px;
+  margin-bottom: 28px;
+}
+
+.section-copy {
+  max-width: 62ch;
+}
+
+.service-band {
+  background: var(--bg);
+}
+
+.about-section,
+.assurance-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: start;
+  background: var(--surface);
+}
+
+.about-copy p,
+.assurance-content p {
+  max-width: 66ch;
+}
+
+.credential-panel,
+.assurance-list {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8faf8;
+  box-shadow: 0 12px 28px rgba(23, 34, 29, 0.06);
+}
+
+.credential-panel {
+  padding: 24px;
+}
+
+.credential-panel ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.purpose-section {
+  background: #eef3ef;
+}
+
+.standards-section {
+  background: var(--surface);
+}
+
+.standards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.standards-grid article {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #f7faf7);
+  box-shadow: 0 12px 28px rgba(23, 34, 29, 0.06);
+}
+
+.standards-grid strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--green-dark);
+  font-size: 1.05rem;
+}
+
+.standards-grid p {
+  margin: 0;
+}
+
+.gallery-section {
+  background: var(--surface);
+}
+
+.service-grid,
+.process-grid,
+.purpose-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr 0.85fr;
+  grid-auto-rows: 260px;
+  gap: 16px;
+}
+
+.gallery-card {
+  position: relative;
+  min-height: 240px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--green-dark);
+  box-shadow: var(--shadow);
+}
+
+.gallery-card.large {
+  grid-row: span 2;
+}
+
+.gallery-card.wide {
+  grid-column: span 2;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.gallery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 59, 44, 0.04), rgba(13, 59, 44, 0.82));
+}
+
+.gallery-card:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-card figcaption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  color: #fff;
+}
+
+.gallery-card strong,
+.gallery-card span {
+  display: block;
+}
+
+.gallery-card strong {
+  margin-bottom: 6px;
+  font-size: 1.08rem;
+}
+
+.gallery-card span {
+  max-width: 42ch;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.45;
+}
+
+.service-card,
+.purpose-grid article,
+.process-grid article,
+.registration-form,
+.info-panel,
+.calculator-form {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 12px 28px rgba(23, 34, 29, 0.06);
+}
+
+.service-card,
+.purpose-grid article,
+.process-grid article {
+  padding: 22px;
+}
+
+.purpose-grid article {
+  background: var(--surface);
+}
+
+.service-card:nth-child(2) .icon-box {
+  background: var(--blue);
+}
+
+.service-card:nth-child(3) .icon-box {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+.service-card:nth-child(4) .icon-box {
+  background: var(--clay);
+}
+
+.icon-box {
+  margin-bottom: 18px;
+}
+
+.split-section,
+.register-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: clamp(22px, 5vw, 54px);
+  align-items: start;
+}
+
+.split-section {
+  background: #e7eee9;
+}
+
+.estimate-result {
+  display: inline-grid;
+  gap: 4px;
+  min-width: 260px;
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 8px;
+  background: var(--green-dark);
+  color: #fff;
+}
+
+.estimate-result span {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 700;
+}
+
+.estimate-result strong {
+  font-size: 2rem;
+}
+
+.calculator-form,
+.registration-form {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 13px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(24, 93, 69, 0.18);
+  border-color: var(--green);
+}
+
+.process-section {
+  background: var(--surface);
+}
+
+.process-grid article span {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--green);
+  font-weight: 800;
+}
+
+.assurance-section {
+  background:
+    linear-gradient(90deg, rgba(13, 59, 44, 0.92), rgba(24, 93, 69, 0.86)),
+    url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=82")
+      center / cover;
+  color: #fff;
+}
+
+.assurance-section p,
+.assurance-section .eyebrow {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.assurance-section h2 {
+  color: #fff;
+}
+
+.assurance-list {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.assurance-list div {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.assurance-list span,
+.assurance-list strong {
+  display: block;
+}
+
+.assurance-list span {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.58);
+  font-weight: 800;
+}
+
+.assurance-list strong {
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.assurance-list p {
+  margin: 0;
+}
+
+.report-section {
+  background: #eef3ef;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: 18px;
+}
+
+.report-panel,
+.report-highlight {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(23, 34, 29, 0.06);
+}
+
+.report-panel {
+  padding: 26px;
+  background: var(--surface);
+}
+
+.report-panel ul {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding-left: 20px;
+}
+
+.report-highlight {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  padding: 28px;
+  background: var(--green-dark);
+  color: #fff;
+}
+
+.report-highlight span {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.report-highlight strong {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.report-highlight .secondary-button {
+  width: fit-content;
+}
+
+.register-section {
+  background: var(--bg);
+}
+
+.register-copy {
+  position: sticky;
+  top: 96px;
+}
+
+.info-panel {
+  margin-top: 24px;
+  padding: 22px;
+}
+
+.info-panel ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.full-button {
+  width: 100%;
+}
+
+.form-status {
+  min-height: 24px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.form-status.success {
+  color: var(--green);
+}
+
+.form-status.error {
+  color: #a83428;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 30px clamp(18px, 5vw, 72px);
+  background: var(--green-dark);
+  color: #fff;
+}
+
+.footer-main {
+  max-width: 620px;
+}
+
+.footer p {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.contact-details a {
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-note {
+  max-width: 300px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.55;
+}
+
+.footer .primary-button {
+  background: #fff;
+  color: var(--green-dark);
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .split-section,
+  .register-section,
+  .about-section,
+  .assurance-section,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    order: -1;
+  }
+
+  .service-grid,
+  .process-grid,
+  .purpose-grid,
+  .standards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 240px;
+  }
+
+  .gallery-card.large,
+  .gallery-card.wide {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+
+  .register-copy {
+    position: static;
+  }
+}
+
+@media (max-width: 680px) {
+  .topbar,
+  .footer,
+  .contact-strip {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-strip {
+    gap: 8px;
+  }
+
+  .nav {
+    width: 100%;
+  }
+
+  .nav a {
+    flex: 1;
+    text-align: center;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-media {
+    min-height: 310px;
+  }
+
+  .hero-content {
+    padding: 28px 18px 34px;
+  }
+
+  h1 {
+    max-width: 11ch;
+    font-size: 2.75rem;
+  }
+
+  .service-grid,
+  .process-grid,
+  .purpose-grid,
+  .standards-grid,
+  .gallery-grid,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-auto-rows: auto;
+  }
+
+  .gallery-card,
+  .gallery-card.large,
+  .gallery-card.wide {
+    grid-column: auto;
+    min-height: 270px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="contact-strip">
+      <span>Y&amp;P Associates</span>
+      <a href="tel:9958067860">9958067860</a>
+      <a href="tel:8851008259">8851008259</a>
+      <a href="mailto:yatendrapaliwal1@gmail.com">yatendrapaliwal1@gmail.com</a>
+    </div>
+
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Y&P Associates property valuation home">
+        <span class="brand-mark">Y&amp;P</span>
+        <span>
+          <strong>Y&amp;P Associates</strong>
+          <small>Property valuation and advisory</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#process">Process</a>
+        <a href="#register">Register</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#register">Request valuation</a>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-media" aria-hidden="true">
+          <div class="hero-badge">
+            <span>Professional valuation reports</span>
+            <strong>Bank | Legal | Asset Declaration</strong>
+          </div>
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">Independent property valuation practice</p>
+          <h1>Reliable property valuation for lending, documentation, and asset decisions.</h1>
+          <p>
+            Y&amp;P Associates prepares valuation reports for residential, commercial, land, flat,
+            factory, and industrial property cases. Our process combines document review, site
+            inspection, market evidence, and practical reporting for banks, owners, buyers, and
+            professional advisors.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#register">Submit valuation request</a>
+            <a class="secondary-button" href="#calculator">View indicative estimate</a>
+          </div>
+          <div class="trust-row" aria-label="Bank panel experience">
+            <span>PNB</span>
+            <span>UCO Bank</span>
+            <span>Union Bank</span>
+            <span>Other banks</span>
+          </div>
+          <div class="hero-metrics" aria-label="Professional highlights">
+            <div>
+              <strong>Bank-Oriented</strong>
+              <span>Report structure suitable for loan and mortgage documentation</span>
+            </div>
+            <div>
+              <strong>Site Verified</strong>
+              <span>Reports based on documents, inspection, and market review</span>
+            </div>
+            <div>
+              <strong>Multiple Assets</strong>
+              <span>Land, flats, buildings, factories, and commercial properties</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="about-copy">
+          <p class="eyebrow">About Y&amp;P Associates</p>
+          <h2>Independent property valuation with a practical understanding of bank requirements.</h2>
+          <p>
+            Y&amp;P Associates assists clients with professional valuation reports for lending,
+            mortgage, purchase, sale, documentation, legal reference, and asset declaration
+            purposes. Each assignment is approached with attention to ownership records, site
+            condition, approved area, location factors, market evidence, and the intended purpose of
+            valuation.
+          </p>
+        </div>
+        <div class="credential-panel">
+          <h3>Professional focus</h3>
+          <ul>
+            <li>Property valuation for bank and private client requirements</li>
+            <li>Residential, commercial, industrial, land, and flat assessment</li>
+            <li>Site inspection and document-based reporting process</li>
+            <li>Clear communication for borrowers, owners, buyers, and advisors</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section service-band" id="services">
+        <div class="section-heading">
+          <p class="eyebrow">Scope of services</p>
+          <h2>Valuation assignments undertaken for banks, borrowers, and private clients</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="icon-box">H</span>
+            <h3>Residential Buildings</h3>
+            <p>Valuation of independent houses, villas, existing structures, new constructions, and renovation-related cases.</p>
+          </article>
+          <article class="service-card">
+            <span class="icon-box">F</span>
+            <h3>Flats and Apartments</h3>
+            <p>Assessment of flats, apartments, builder floors, group housing units, and under-construction residential properties.</p>
+          </article>
+          <article class="service-card">
+            <span class="icon-box">L</span>
+            <h3>Land and Plots</h3>
+            <p>Valuation of residential plots, agricultural land, converted land, freehold land, and leasehold property interests.</p>
+          </article>
+          <article class="service-card">
+            <span class="icon-box">I</span>
+            <h3>Factories and Industrial Assets</h3>
+            <p>Valuation of factory buildings, industrial sheds, warehouses, workshops, and industrial land parcels.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section purpose-section">
+        <div class="section-heading">
+          <p class="eyebrow">Valuation purposes</p>
+          <h2>Reports prepared for practical financial, legal, and personal requirements</h2>
+        </div>
+        <div class="purpose-grid">
+          <article>
+            <h3>Home Loan and Mortgage</h3>
+            <p>For home loan, loan against property, refinance, and lender documentation.</p>
+          </article>
+          <article>
+            <h3>Purchase and Sale Decisions</h3>
+            <p>For buyers and sellers who need a fair understanding of market value.</p>
+          </article>
+          <article>
+            <h3>Legal and Family Matters</h3>
+            <p>For settlement, partition, record keeping, legal reference, and advisory use.</p>
+          </article>
+          <article>
+            <h3>Government or Asset Declaration</h3>
+            <p>For asset showing, declaration, formal records, and official documentation needs.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section standards-section">
+        <div class="section-heading">
+          <p class="eyebrow">Professional standards</p>
+          <h2>Every assignment is reviewed with a clear valuation basis</h2>
+        </div>
+        <div class="standards-grid">
+          <article>
+            <strong>Document-Based Review</strong>
+            <p>Available title records, approved plans, allotment papers, tax receipts, and property details are considered.</p>
+          </article>
+          <article>
+            <strong>Physical Verification</strong>
+            <p>Site condition, construction quality, access, occupancy, frontage, and neighbourhood characteristics are reviewed.</p>
+          </article>
+          <article>
+            <strong>Market Evidence</strong>
+            <p>Local rates, comparable transactions, development potential, and saleability are assessed before reporting.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section gallery-section" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Property valuation gallery</p>
+          <h2>Land, residential, commercial, and industrial assets we help assess</h2>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-card large">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1300&q=82" alt="Open land parcel suitable for valuation" />
+            <figcaption>
+              <strong>Land and plot valuation</strong>
+              <span>Market rate analysis, location potential, access, and land use review.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=82" alt="Residential property exterior" />
+            <figcaption>
+              <strong>Residential buildings</strong>
+              <span>Inspection of construction quality, age, condition, and neighbourhood value.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=82" alt="Modern house and landscaped plot" />
+            <figcaption>
+              <strong>Premium homes and villas</strong>
+              <span>Assessment for purchase, mortgage, and formal lending requirements.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=82" alt="Commercial building for valuation" />
+            <figcaption>
+              <strong>Commercial assets</strong>
+              <span>Valuation of offices, shops, mixed-use buildings, and income properties.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card wide">
+            <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=82" alt="Industrial factory building and warehouse" />
+            <figcaption>
+              <strong>Factories and industrial premises</strong>
+              <span>Review of built-up area, shed structure, industrial location, and utility.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=900&q=82" alt="Property site and surrounding development area" />
+            <figcaption>
+              <strong>Location assessment</strong>
+              <span>Evaluation of approach road, surroundings, development, and market demand.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=82" alt="Developed land with open surroundings" />
+            <figcaption>
+              <strong>Open land potential</strong>
+              <span>Consideration of frontage, usability, neighbourhood growth, and saleability.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section split-section" id="calculator">
+        <div>
+          <p class="eyebrow">Indicative calculator</p>
+          <h2>Preliminary value indication before formal inspection</h2>
+          <p class="section-copy">
+            This calculator is intended only for a preliminary understanding of value. Final
+            valuation is subject to title document review, physical inspection, location analysis,
+            construction specifications, property age, market evidence, and applicable bank
+            requirements.
+          </p>
+          <div class="estimate-result" aria-live="polite">
+            <span>Indicative value</span>
+            <strong id="estimate-value">Rs. 0</strong>
+          </div>
+        </div>
+        <form class="calculator-form" id="calculator-form">
+          <label>
+            Property type
+            <select id="calc-type">
+              <option value="flat">Flat / Apartment</option>
+              <option value="building">Residential building</option>
+              <option value="land">Land / Plot</option>
+              <option value="factory">Factory / Industrial</option>
+            </select>
+          </label>
+          <label>
+            Area
+            <input id="calc-area" type="number" min="1" placeholder="Example: 1200" />
+          </label>
+          <label>
+            Rate per sq. ft.
+            <input id="calc-rate" type="number" min="1" placeholder="Example: 4500" />
+          </label>
+          <label>
+            Construction age
+            <select id="calc-age">
+              <option value="1">New / under 5 years</option>
+              <option value="0.92">5 to 10 years</option>
+              <option value="0.84">10 to 20 years</option>
+              <option value="0.72">Above 20 years</option>
+            </select>
+          </label>
+        </form>
+      </section>
+
+      <section class="section process-section" id="process">
+        <div class="section-heading">
+          <p class="eyebrow">Valuation process</p>
+          <h2>A structured process from enquiry to final report</h2>
+        </div>
+        <div class="process-grid">
+          <article>
+            <span>01</span>
+            <h3>Enquiry Registration</h3>
+            <p>Submit client details, property category, location, approximate area, and purpose.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Document Review</h3>
+            <p>Provide available title documents, approved plan, tax records, allotment letter, or sale deed for verification.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Site Inspection</h3>
+            <p>A physical inspection is conducted to verify area, construction quality, access, occupancy, and property condition.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Report Preparation</h3>
+            <p>The valuation report is prepared in the required format for bank, client, legal, or personal reference.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section report-section">
+        <div class="section-heading">
+          <p class="eyebrow">Report deliverables</p>
+          <h2>What clients can expect in a valuation assignment</h2>
+        </div>
+        <div class="report-grid">
+          <div class="report-panel">
+            <h3>Typical report coverage</h3>
+            <ul>
+              <li>Property identification and location description</li>
+              <li>Land area, built-up area, and property type details</li>
+              <li>Construction condition, age, and visible specifications</li>
+              <li>Market value indication with valuation observations</li>
+              <li>Purpose-specific remarks for bank, legal, or personal use</li>
+            </ul>
+          </div>
+          <div class="report-highlight">
+            <span>Prepared for</span>
+            <strong>Home loan, LAP, purchase, sale, legal record, and asset declaration cases.</strong>
+            <a class="secondary-button" href="#register">Start enquiry</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section assurance-section">
+        <div class="assurance-content">
+          <p class="eyebrow">Report approach</p>
+          <h2>Prepared with inspection, documentation, and market evidence.</h2>
+          <p>
+            A professional valuation is more than a rate calculation. It requires verification of
+            property details, review of available records, consideration of development potential,
+            comparison with market evidence, and clear reporting suitable for the stated purpose.
+          </p>
+        </div>
+        <div class="assurance-list">
+          <div>
+            <span>01</span>
+            <strong>Document review</strong>
+            <p>Ownership papers, plans, tax records, allotment details, and available approvals.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>Physical inspection</strong>
+            <p>Area, frontage, access, construction condition, age, occupancy, and site features.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>Market analysis</strong>
+            <p>Comparable rates, location demand, utility, saleability, and present market trend.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section register-section" id="register">
+        <div class="register-copy">
+          <p class="eyebrow">Client registration</p>
+          <h2>Submit your property details for valuation</h2>
+          <p>
+            Please provide the basic property and contact details below. Y&amp;P Associates will review
+            the information and contact you for documents, inspection scheduling, and further
+            valuation requirements.
+          </p>
+          <div class="info-panel">
+            <h3>Documents generally required</h3>
+            <ul>
+              <li>Sale deed or allotment letter</li>
+              <li>Approved map or building plan</li>
+              <li>Latest tax receipt or electricity bill</li>
+              <li>Loan or institution details, wherever applicable</li>
+            </ul>
+          </div>
+        </div>
+        <form class="registration-form" id="registration-form">
+          <div class="form-row">
+            <label>
+              Applicant name
+              <input name="name" type="text" required placeholder="Enter applicant name" />
+            </label>
+            <label>
+              Contact number
+              <input name="mobile" type="tel" required inputmode="numeric" placeholder="10 digit contact number" />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              Property category
+              <select name="propertyType" required>
+                <option value="">Select property</option>
+                <option>Residential building</option>
+                <option>Flat / apartment</option>
+                <option>Land / plot</option>
+                <option>Factory / industrial</option>
+                <option>Commercial property</option>
+              </select>
+            </label>
+            <label>
+              Approximate area
+              <input name="area" type="text" placeholder="Example: 1500 sq. ft." />
+            </label>
+          </div>
+          <label>
+            Property address / location
+            <input name="location" type="text" required placeholder="City, area, landmark" />
+          </label>
+          <div class="form-row">
+            <label>
+              Purpose of valuation
+              <select name="purpose" required>
+                <option value="">Select purpose</option>
+                <option>Home loan</option>
+                <option>Loan against property</option>
+                <option>Buying / selling</option>
+                <option>Legal / family settlement</option>
+                <option>Asset declaration to government authority</option>
+                <option>Personal knowledge</option>
+              </select>
+            </label>
+            <label>
+              Preferred contact time
+              <select name="contactTime">
+                <option value="">Select time</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Evening</option>
+                <option>Anytime</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Additional information
+            <textarea name="details" rows="4" placeholder="Mention property age, floor, road width, occupancy, documents available, etc."></textarea>
+          </label>
+          <button class="primary-button full-button" type="submit">Submit valuation request</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-main">
+        <strong>Y&amp;P Associates</strong>
+        <p>Professional valuation of buildings, land, flats, factories, commercial assets, and bank mortgage cases.</p>
+        <div class="contact-details" aria-label="Contact details">
+          <a href="tel:9958067860">9958067860</a>
+          <a href="tel:8851008259">8851008259</a>
+          <a href="mailto:yatendrapaliwal1@gmail.com">yatendrapaliwal1@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-note">
+        <span>Valuation support for bank documentation, property decisions, legal reference, and asset declaration.</span>
+      </div>
+      <a class="primary-button" href="#register">Submit request</a>
+    </footer>
+
+    <script>
+      const calculatorForm = document.getElementById("calculator-form");
+      const estimateValue = document.getElementById("estimate-value");
+      const registrationForm = document.getElementById("registration-form");
+      const formStatus = document.getElementById("form-status");
+      const typeMultipliers = { flat: 1, building: 1.08, land: 0.95, factory: 1.15 };
+
+      function formatRupees(value) {
+        return new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+          maximumFractionDigits: 0,
+        }).format(value);
+      }
+
+      function updateEstimate() {
+        const area = Number(document.getElementById("calc-area").value);
+        const rate = Number(document.getElementById("calc-rate").value);
+        const type = document.getElementById("calc-type").value;
+        const age = Number(document.getElementById("calc-age").value);
+
+        if (!area || !rate) {
+          estimateValue.textContent = "Rs. 0";
+          return;
+        }
+
+        estimateValue.textContent = formatRupees(area * rate * typeMultipliers[type] * age);
+      }
+
+      calculatorForm.addEventListener("input", updateEstimate);
+
+      registrationForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(registrationForm);
+        const enquiry = Object.fromEntries(formData.entries());
+
+        try {
+          if (window.location.protocol === "file:") {
+            const enquiries = JSON.parse(localStorage.getItem("valuationEnquiries") || "[]");
+            enquiries.push({ ...enquiry, createdAt: new Date().toISOString() });
+            localStorage.setItem("valuationEnquiries", JSON.stringify(enquiries));
+          } else {
+            const response = await fetch("/api/valuation-requests", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(enquiry),
+            });
+
+            if (!response.ok) {
+              const result = await response.json();
+              throw new Error(result.message || "Unable to submit valuation request.");
+            }
+          }
+
+          registrationForm.reset();
+          formStatus.className = "form-status success";
+          formStatus.textContent =
+            "Your valuation request has been submitted. Y&P Associates will contact you shortly.";
+        } catch (error) {
+          formStatus.className = "form-status error";
+          formStatus.textContent = error.message;
+        }
+      });
+
+      updateEstimate();
+    </script>
+  </body>
+</html>
+
